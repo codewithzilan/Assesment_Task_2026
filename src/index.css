@@ -1,61 +1,108 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Call Center Dashboard - Dark Navy Theme */
+
 @layer base {
   :root {
-    --background: 222 47% 11%;
+    --background: 222 47% 6%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 14%;
+    --card: 222 47% 11%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47% 14%;
+    --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 174 100% 42%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 160 100% 45%;
+    --primary-foreground: 222 47% 6%;
 
-    --secondary: 217 33% 20%;
+    --secondary: 222 47% 15%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217 33% 20%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 222 47% 15%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 217 33% 25%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 188 100% 50%;
+    --accent-foreground: 222 47% 6%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
     --success: 142 76% 45%;
-    --success-foreground: 210 40% 98%;
+    --success-foreground: 222 47% 6%;
 
     --warning: 38 92% 50%;
-    --warning-foreground: 222 47% 11%;
+    --warning-foreground: 222 47% 6%;
 
-    --info: 199 89% 48%;
-    --info-foreground: 210 40% 98%;
-
-    --border: 217 33% 22%;
-    --input: 217 33% 20%;
-    --ring: 174 100% 42%;
+    --border: 222 47% 18%;
+    --input: 222 47% 15%;
+    --ring: 160 100% 45%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 222 47% 11%;
-    --sidebar-foreground: 215 20% 65%;
-    --sidebar-primary: 174 100% 42%;
-    --sidebar-primary-foreground: 222 47% 11%;
-    --sidebar-accent: 217 33% 17%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 22%;
-    --sidebar-ring: 174 100% 42%;
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 160 100% 45%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 188 100% 50%;
+    --sidebar-accent-foreground: 222 47% 6%;
+    --sidebar-border: 222 47% 15%;
+    --sidebar-ring: 160 100% 45%;
+    --sidebar-active: 188 100% 50%;
 
-    --chart-gradient-start: 174 100% 42%;
-    --chart-gradient-end: 199 89% 48%;
+    --chart-gradient-start: 188 100% 50%;
+    --chart-gradient-end: 160 100% 45%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 160 100% 45%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 47% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 47% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 188 100% 50%;
+    --accent-foreground: 222 47% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 76% 45%;
+    --success-foreground: 222 47% 6%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 6%;
+
+    --border: 222 47% 18%;
+    --input: 222 47% 15%;
+    --ring: 160 100% 45%;
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 160 100% 45%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 188 100% 50%;
+    --sidebar-accent-foreground: 222 47% 6%;
+    --sidebar-border: 222 47% 15%;
+    --sidebar-ring: 160 100% 45%;
+    --sidebar-active: 188 100% 50%;
+
+    --chart-gradient-start: 188 100% 50%;
+    --chart-gradient-end: 160 100% 45%;
   }
 }
 
@@ -65,45 +112,27 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 }
 
-@layer components {
-  .stat-card {
-    @apply bg-card rounded-xl p-5 border border-border;
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
   }
 
-  .stat-card-icon {
-    @apply w-11 h-11 rounded-xl flex items-center justify-center;
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
   }
 
-  .nav-item {
-    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:text-foreground hover:bg-sidebar-accent transition-all duration-200;
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
   }
 
-  .nav-item-active {
-    @apply bg-sidebar-accent text-foreground border border-sidebar-border;
-  }
-
-  .badge-resolved {
-    @apply bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-medium;
-  }
-
-  .badge-transfer {
-    @apply bg-warning/20 text-warning px-3 py-1 rounded-full text-xs font-medium;
-  }
-
-  .badge-dropped {
-    @apply bg-destructive/20 text-destructive px-3 py-1 rounded-full text-xs font-medium;
-  }
-
-  .badge-appointment {
-    @apply bg-info/20 text-info px-3 py-1 rounded-full text-xs font-medium;
-  }
-
-  .transcript-box {
-    @apply bg-secondary/50 border border-primary/30 rounded-lg p-4;
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted));
+    border-radius: 3px;
   }
 }

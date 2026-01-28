@@ -1,44 +1,51 @@
-import { LucideIcon } from "lucide-react";
+import { ReactNode } from "react";
 
 interface StatCardProps {
   title: string;
   value: string | number;
   change?: string;
   changeType?: "positive" | "negative" | "neutral";
-  icon: LucideIcon;
-  iconBgClass: string;
-  iconColorClass: string;
+  subtitle?: string;
+  icon: ReactNode;
+  iconBgColor?: string;
 }
 
-export const StatCard = ({
-  title,
-  value,
-  change,
-  changeType = "neutral",
-  icon: Icon,
-  iconBgClass,
-  iconColorClass,
+const StatCard = ({ 
+  title, 
+  value, 
+  change, 
+  changeType = "neutral", 
+  subtitle,
+  icon,
+  iconBgColor = "bg-accent"
 }: StatCardProps) => {
-  const changeColorClass = {
+  const changeColor = {
     positive: "text-success",
     negative: "text-destructive",
-    neutral: "text-muted-foreground",
-  }[changeType];
+    neutral: "text-muted-foreground"
+  };
 
   return (
-    <div className="stat-card animate-fade-in">
+    <div className="rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:border-accent/30">
       <div className="flex items-start justify-between">
-        <div>
-          <p className="text-muted-foreground text-sm mb-2">{title}</p>
-          <p className="text-3xl font-bold text-foreground">{value}</p>
+        <div className="flex-1">
+          <p className="text-sm text-muted-foreground">{title}</p>
+          <p className="mt-2 text-3xl font-bold text-foreground">{value}</p>
           {change && (
-            <p className={`text-sm mt-1 ${changeColorClass}`}>{change}</p>
+            <p className={`mt-1 text-sm font-medium ${changeColor[changeType]}`}>
+              {change}
+            </p>
+          )}
+          {subtitle && (
+            <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
           )}
         </div>
-        <div className={`stat-card-icon ${iconBgClass}`}>
-          <Icon className={`w-5 h-5 ${iconColorClass}`} />
+        <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${iconBgColor}`}>
+          {icon}
         </div>
       </div>
     </div>
   );
 };
+
+export default StatCard;

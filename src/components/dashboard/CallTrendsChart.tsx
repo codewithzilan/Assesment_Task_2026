@@ -1,67 +1,67 @@
-import { Area, AreaChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts";
+import { Area, AreaChart, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 const data = [
-  { day: "Mon", calls: 52 },
-  { day: "Tue", calls: 58 },
-  { day: "Wed", calls: 65 },
-  { day: "Thu", calls: 72 },
-  { day: "Fri", calls: 95 },
-  { day: "Sat", calls: 78 },
-  { day: "Sun", calls: 52 },
+  { day: "Mon", calls: 45 },
+  { day: "Tue", calls: 52 },
+  { day: "Wed", calls: 48 },
+  { day: "Thu", calls: 65 },
+  { day: "Fri", calls: 82 },
+  { day: "Sat", calls: 95 },
+  { day: "Sun", calls: 85 },
 ];
 
-export const CallTrendsChart = () => {
+const CallTrendsChart = () => {
   return (
-    <div className="stat-card animate-fade-in">
-      <div className="flex items-center justify-between mb-6">
+    <div className="rounded-xl border border-border bg-card p-6">
+      <div className="mb-6 flex items-center justify-between">
         <div>
           <h3 className="text-lg font-semibold text-foreground">Call Trends - This Week</h3>
-          <p className="text-muted-foreground text-sm">Total: 472 calls</p>
+          <div className="mt-2 inline-block rounded bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+            Total: 472 calls
+          </div>
         </div>
-        <button className="bg-secondary text-foreground px-4 py-2 rounded-full text-sm flex items-center gap-2">
+        <button className="flex items-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary/80">
           This Week
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
+          <span className="text-muted-foreground">▾</span>
         </button>
       </div>
 
-      <div className="h-64">
+      <div className="h-72">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="callGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(199 89% 48%)" stopOpacity={0.4} />
-                <stop offset="100%" stopColor="hsl(199 89% 48%)" stopOpacity={0} />
+                <stop offset="0%" stopColor="hsl(188, 100%, 50%)" stopOpacity={0.4} />
+                <stop offset="100%" stopColor="hsl(160, 100%, 45%)" stopOpacity={0.05} />
               </linearGradient>
             </defs>
-            <XAxis
-              dataKey="day"
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: "hsl(215 20% 55%)", fontSize: 12 }}
+            <CartesianGrid strokeDasharray="3 3" stroke="hsl(222, 47%, 18%)" vertical={false} />
+            <XAxis 
+              dataKey="day" 
+              axisLine={false} 
+              tickLine={false} 
+              tick={{ fill: 'hsl(215, 20%, 65%)', fontSize: 12 }}
             />
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: "hsl(215 20% 55%)", fontSize: 12 }}
-              domain={[0, 100]}
+            <YAxis 
+              axisLine={false} 
+              tickLine={false} 
+              tick={{ fill: 'hsl(215, 20%, 65%)', fontSize: 12 }}
               ticks={[0, 25, 50, 75, 100]}
             />
-            <Tooltip
-              contentStyle={{
-                backgroundColor: "hsl(222 47% 14%)",
-                border: "1px solid hsl(217 33% 22%)",
-                borderRadius: "8px",
-                color: "hsl(210 40% 98%)",
+            <Tooltip 
+              contentStyle={{ 
+                backgroundColor: 'hsl(222, 47%, 11%)', 
+                border: '1px solid hsl(222, 47%, 18%)',
+                borderRadius: '8px',
+                color: 'hsl(210, 40%, 98%)'
               }}
             />
-            <Area
-              type="monotone"
-              dataKey="calls"
-              stroke="hsl(199 89% 48%)"
+            <Area 
+              type="monotone" 
+              dataKey="calls" 
+              stroke="hsl(188, 100%, 50%)" 
               strokeWidth={2}
-              fill="url(#callGradient)"
+              fill="url(#callGradient)" 
             />
           </AreaChart>
         </ResponsiveContainer>
@@ -69,3 +69,5 @@ export const CallTrendsChart = () => {
     </div>
   );
 };
+
+export default CallTrendsChart;

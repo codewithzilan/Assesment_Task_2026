@@ -13,8 +13,8 @@ dist-ssr/
 # Logs
 npm-debug.log*
 
-# OS
+# DS
 .DS_Store
 
-# Lockfiles (bun project)
+# Lockfiles (npm lock)
 package-lock.json
