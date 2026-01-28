@@ -18,13 +18,17 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          
           <Route path="/" element={<Dashboard />} />
           <Route path="/call-logs" element={<CallLogs />} />
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/settings" element={<Settings />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
+
           <Route path="*" element={<NotFound />} />
+
         </Routes>
+
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

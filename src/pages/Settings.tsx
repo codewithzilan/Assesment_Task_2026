@@ -5,7 +5,7 @@ import { Edit2 } from "lucide-react";
 const Settings = () => {
   const [activeTab, setActiveTab] = useState<"profile" | "password">("profile");
   const [isEditing, setIsEditing] = useState(false);
-  
+
   const [profileData, setProfileData] = useState({
     fullName: "Jane D.",
     email: "jane@gmail.com",
@@ -33,21 +33,19 @@ const Settings = () => {
       <div className="mb-8 flex gap-8 border-b border-border">
         <button
           onClick={() => setActiveTab("profile")}
-          className={`pb-4 text-sm font-medium transition-colors ${
-            activeTab === "profile" 
-              ? "border-b-2 border-foreground text-foreground" 
+          className={`pb-4 text-sm font-medium transition-colors ${activeTab === "profile"
+              ? "border-b-2 border-foreground text-foreground"
               : "text-muted-foreground hover:text-foreground"
-          }`}
+            }`}
         >
           Profile
         </button>
         <button
           onClick={() => setActiveTab("password")}
-          className={`pb-4 text-sm font-medium transition-colors ${
-            activeTab === "password" 
-              ? "border-b-2 border-foreground text-foreground" 
+          className={`pb-4 text-sm font-medium transition-colors ${activeTab === "password"
+              ? "border-b-2 border-foreground text-foreground"
               : "text-muted-foreground hover:text-foreground"
-          }`}
+            }`}
         >
           Password Settings
         </button>
@@ -60,7 +58,7 @@ const Settings = () => {
             <p className="mb-3 text-sm font-medium text-foreground">Profile Image</p>
             <div className="relative inline-block">
               <div className="h-20 w-20 overflow-hidden rounded-full border-2 border-accent/30 bg-secondary">
-                <img 
+                <img
                   src="avatar.png"
                   alt="Profile"
                   className="h-full w-full object-cover"
@@ -72,7 +70,7 @@ const Settings = () => {
                 </button>
               )}
               {!isEditing && (
-                <button 
+                <button
                   onClick={() => setIsEditing(true)}
                   className="absolute -bottom-1 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-secondary/90 px-2 py-1 text-xs font-medium text-foreground"
                 >
@@ -124,7 +122,7 @@ const Settings = () => {
                 </div>
               </div>
 
-              <button 
+              <button
                 onClick={() => setIsEditing(false)}
                 className="w-full max-w-xs rounded-lg bg-primary py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 sm:w-auto sm:px-24"
               >

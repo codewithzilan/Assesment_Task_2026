@@ -24,27 +24,27 @@ const Appointments = () => {
     <DashboardLayout title="Appointments">
       {/* Stats */}
       <div className="mb-6 grid gap-4 sm:grid-cols-3">
-        <StatCard 
-          title="Total Booked" 
-          value={34} 
+        <StatCard
+          title="Total Booked"
+          value={34}
           change="+8 this week"
           changeType="positive"
           icon={<Calendar className="h-5 w-5 text-primary-foreground" />}
-          iconBgColor="bg-primary"
+          iconBgColor="bg-gradient-to-r from-[#2B7FFF] to-[#00B8DB]"
         />
-        <StatCard 
-          title="AI Booked" 
-          value={28} 
+        <StatCard
+          title="AI Booked"
+          value={28}
           subtitle="82% of total"
           icon={<CheckCircle className="h-5 w-5 text-success-foreground" />}
-          iconBgColor="bg-success"
+          iconBgColor="bg-gradient-to-r from-[#00C950] to-[#00BC7D]"
         />
-        <StatCard 
-          title="Pending" 
-          value={3} 
+        <StatCard
+          title="Pending"
+          value={3}
           subtitle="Awaiting confirmation"
           icon={<Clock className="h-5 w-5 text-warning-foreground" />}
-          iconBgColor="bg-warning"
+          iconBgColor="bg-gradient-to-r from-[#FF6900] to-[#FB2C36]"
         />
       </div>
 
@@ -58,7 +58,7 @@ const Appointments = () => {
             readOnly
             className="flex-1 rounded-lg border border-border bg-background py-3 px-4 text-foreground"
           />
-          <button 
+          <button
             onClick={handleCopyLink}
             className="flex items-center justify-center gap-2 rounded-lg bg-secondary px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary/80"
           >
@@ -85,10 +85,10 @@ const Appointments = () => {
             </thead>
             <tbody>
               {appointmentsData.map((appointment, index) => (
-                <tr key={index} className="border-b border-border last:border-0 hover:bg-secondary/10 transition-colors">
-                  <td className="px-6 py-4 text-sm text-accent font-medium">{appointment.name}</td>
+                <tr key={index} className="border-b border-border text-[#2B7FFF] last:border-0 hover:bg-secondary/10 transition-colors">
+                  <td className="px-6 py-4 text-sm font-medium">{appointment.name}</td>
                   <td className="px-6 py-4 text-sm text-foreground">{appointment.phone}</td>
-                  <td className="px-6 py-4 text-sm text-accent">{appointment.email}</td>
+                  <td className="px-6 py-4 text-sm text-[#2B7FFF]">{appointment.email}</td>
                   <td className="px-6 py-4 text-sm text-foreground">{appointment.device}</td>
                   <td className="px-6 py-4 text-sm text-foreground">{appointment.type}</td>
                   <td className="px-6 py-4 text-sm text-muted-foreground">{appointment.date}</td>
@@ -105,27 +105,26 @@ const Appointments = () => {
           <button className="flex items-center gap-1 px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
             <ChevronLeft className="h-4 w-4" /> Previous
           </button>
-          
+
           {[1, 2, 3, 4, 5].map((page) => (
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
-              className={`flex h-8 w-8 items-center justify-center rounded text-sm font-medium transition-colors ${
-                currentPage === page 
-                  ? "bg-secondary text-foreground" 
+              className={`flex h-8 w-8 items-center justify-center rounded text-sm font-medium transition-colors ${currentPage === page
+                  ? "bg-[#2B7FFF] text-foreground"
                   : "text-muted-foreground hover:text-foreground"
-              }`}
+                }`}
             >
               {page}
             </button>
           ))}
-          
+
           <span className="text-muted-foreground">...</span>
           <button className="flex h-8 w-8 items-center justify-center rounded text-sm text-muted-foreground hover:text-foreground">
             {totalPages}
           </button>
-          
-          <button className="flex items-center gap-1 px-3 py-1.5 text-sm text-accent hover:text-accent/80 transition-colors">
+
+          <button className="flex items-center gap-1 px-3 py-1.5 text-sm text-[#2B7FFF] hover:text-accent/80 transition-colors">
             Next <ChevronRight className="h-4 w-4" />
           </button>
         </div>
